@@ -1,0 +1,14 @@
+<launch>
+
+    <include file="$(find towr_ros)/launch/towr_nodes.launch">
+        <arg name="gdb" value="" />
+    </include>
+
+    <node name="rviz_marker_node" pkg="xpp_vis" type="rviz_marker_node" output="screen">
+    </node>
+
+    <param name="robot_description" command="xacro '$(find quadruped_robot_description)/urdf/quadruped_robot.urdf.xacro'"/>
+
+    <node name="urdf_visualizer_spider4" pkg="xpp_hyq" type="urdf_visualizer_spider4" output="screen"/>
+
+</launch>
