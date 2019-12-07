@@ -1,0 +1,28 @@
+<launch>
+    <arg name="paused" default="true"/>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="paused" value="$(arg paused)"/>
+    </include>
+
+    <param name="robot_description" command="xacro '$(find quadruped_robot_description)/urdf/quadruped_robot.urdf.xacro'"/>
+    <!--<param name="robot_description" command="xacro '$(find quadruped_robot_description)/urdf/fixed/quadruped_robot_fixed2.urdf.xacro'"/>-->
+
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf  -param robot_description
+        -z 0.06
+        -J Leg-LF-HAA_joint 0.7853981633974483
+        -J Leg-LF-HFE_joint 2.297504235910269
+        -J Leg-LF-KFE_joint 1.2406129740850251
+        -J Leg-RF-HAA_joint 0.7853981633974483
+        -J Leg-RF-HFE_joint 0.8440884176795242
+        -J Leg-RF-KFE_joint 1.900979679504768
+        -J Leg-LH-HAA_joint 0.7853981633974483
+        -J Leg-LH-HFE_joint 0.8440884176795242
+        -J Leg-LH-KFE_joint 1.900979679504768
+        -J Leg-RH-HAA_joint 0.7853981633974483
+        -J Leg-RH-HFE_joint 2.297504235910269
+        -J Leg-RH-KFE_joint 1.2406129740850251
+        -model quadruped_robot"/>
+
+</launch>
