@@ -1,0 +1,208 @@
+time_from_start: 
+  secs: 0
+  nsecs:         0
+base: 
+  pose: 
+    position: 
+      x: 0.0
+      y: 0.0
+      z: 0.06
+    orientation: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  twist: 
+    linear: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  accel: 
+    linear: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+ee_motion: 
+  - 
+    pos: 
+      x: 0.05
+      y: 0.1
+      z: 0.0
+    vel: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    acc: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  - 
+    pos: 
+      x: 0.05
+      y: -0.1
+      z: 0.0
+    vel: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    acc: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  - 
+    pos: 
+      x: -0.05
+      y: 0.1
+      z: 0.0
+    vel:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    acc: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  - 
+    pos: 
+      x: -0.05
+      y: -0.1
+      z: 0.0
+    vel: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    acc: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+ee_forces: 
+  - 
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  - 
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  - 
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  - 
+    x: 0.0
+    y: 0.0
+    z: 0.0
+ee_contact: [True, True, True, True]
+---
+time_from_start:
+  secs: 0
+  nsecs:         0
+base:
+  pose:
+    position:
+      x: 0.0
+      y: 0.0
+      z: 0.06
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  twist:
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  accel:
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+ee_motion:
+  -
+    pos:
+      x: 0.05
+      y: 0.1
+      z: 0.0
+    vel:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    acc:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    pos:
+      x: 0.05
+      y: -0.1
+      z: 0.0
+    vel:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    acc:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    pos:
+      x: -0.05
+      y: 0.1
+      z: 0.0
+    vel:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    acc:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    pos:
+      x: -0.05
+      y: -0.1
+      z: 0.0
+    vel:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    acc:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+ee_forces:
+  -
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  -
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  -
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  -
+    x: 0.0
+    y: 0.0
+    z: 0.0
+ee_contact: [True, True, True, True]
+---

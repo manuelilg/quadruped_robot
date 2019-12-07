@@ -1,0 +1,18 @@
+<launch>
+  <arg name="bag_nr" default=""/>
+
+  <!-- visualizes goal, opt. parameters and cartesian base state, endeffector positions and forces -->
+  <node name="rviz_marker_node" pkg="quadruped_robot_xpp" type="rviz_marker_node_spider4" output="screen">
+  </node>
+  
+  <!-- Launch rviz with specific configuration -->
+  <node name="rviz_xpp" pkg="rviz" type="rviz"  args="-d $(find quadruped_robot_xpp)/rviz/xpp_spider_standalone.rviz">
+  </node>
+  
+  <!--  Launches spider visualizer  -->
+  <include file="$(find quadruped_robot_xpp)/launch/spider.launch"></include>
+
+    <!-- Generate and publish robot states in loop  -->
+    <node name="spider_publisher" pkg="quadruped_robot_xpp" type="spider_publisher" output="screen"/>
+  
+</launch>

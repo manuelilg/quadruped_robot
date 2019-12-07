@@ -1,0 +1,23 @@
+<launch>
+  <arg name="bag_nr" default=""/>
+
+  <!-- visualizes goal, opt. parameters and cartesian base state, endeffector positions and forces -->
+  <node name="rviz_marker_node" pkg="quadruped_robot_xpp" type="rviz_marker_node_spider4" output="screen">
+  </node>
+  
+  <!-- Launch rviz with specific configuration -->
+  <node name="rviz_xpp" pkg="rviz" type="rviz"  args="-d $(find quadruped_robot_xpp)/rviz/xpp_spider_standalone.rviz">
+  </node>
+  
+  <!--  Launches spider visualizer  -->
+  <include file="$(find quadruped_robot_xpp)/launch/spider.launch"></include>
+
+  <!--<node name="default_pos" pkg="rostopic" type="rostopic"
+    args="pub -r 1 -l -f $(find quadruped_robot_xpp)/bags/xpp_joint_hyq_des_message_all_0-rad.yaml /xpp/joint_spider_des xpp_msgs/RobotStateJoint"
+    />-->
+
+  <node name="default_pos" pkg="rostopic" type="rostopic"
+    args="pub -r 1 -l -f $(find quadruped_robot_xpp)/bags/xpp_state_des_spider$(arg bag_nr).yaml /xpp/state_des xpp_msgs/RobotStateCartesian"
+    />
+  
+</launch>
