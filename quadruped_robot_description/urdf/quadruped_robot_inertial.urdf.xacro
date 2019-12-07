@@ -1,64 +1,106 @@
 <?xml version="1.0" ?>
 <robot name="quadruped_robot" xmlns:xacro="http://ros.org/wiki/xacro">
 
+    <xacro:property name="densitiy_acryl" value="1.18"/> <!--g/cm^3-->
+
     <xacro:macro name="body_inertial">
         <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="1.0"/>
-            <inertia ixx="0"    ixy="0"     ixz="0"
-                                iyy="0"     iyz="0"
-                                            izz="0"/>
+            <origin xyz="0 0 ${0.00215 - 0.00030994730}" rpy="0 0 0"/>
+            <mass value="0.03358586"/>
+            <inertia ixx="19.14387528e-6"   ixy="0"                 ixz="0"
+                                            iyy="20.45099982e-6"    iyz="0"
+                                                                    izz="39.44674786e-6"/>
         </inertial>
     </xacro:macro>
 
-    <xacro:macro name="hip_inertial">
+    <xacro:macro name="body_bottom-plate_inertial">
+        <inertial>
+            <origin xyz="0 0 0.00204012124" rpy="0 0 0"/>
+            <mass value="0.02916197"/>
+            <inertia ixx="13.38763183e-6"   ixy="0"                 ixz="0"
+                                            iyy="13.10624042e-6"    iyz="0"
+                                                                    izz="26.38194090e-6"/>
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="body_battery_inertial">
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="1.0"/>
-            <inertia ixx="0"    ixy="0"     ixz="0"
-                                iyy="0"     iyz="0"
-                                            izz="0"/>
+            <mass value="${0.02320757 + 0.00410292}"/>
+            <inertia ixx="${8.39147172 + 1.90379147}e-6"   ixy="0"                 ixz="0"
+                                            iyy="${8.39147160 + 1.90379147}e-6"    iyz="0"
+                                                                    izz="${0.93990666 + 0.30770938}e-6"/>
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="hip_part1_inertial">
+        <inertial>
+            <origin xyz="0.00552546327 -0.00647198504 0.0" rpy="0 0 0"/>
+            <mass value="0.00213352"/>
+            <inertia ixx="0.19721721e-6"    ixy="0.00644866e-6"     ixz="0.0"
+                                            iyy="0.12841865e-6"     iyz="0.0"
+                                                                    izz="0.31906107e-6"/>
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="hip_part2_inertial">
+        <inertial>
+            <origin xyz="0.00434707377 0.00500243858 0.0" rpy="0 0 0"/>
+            <mass value="0.00180797"/>
+            <inertia ixx="0.17081438e-6"    ixy="0.01188753e-6"     ixz="0"
+                                            iyy="0.11193880e-6"     iyz="0"
+                                                                    izz="0.27718162e-6"/>
         </inertial>
     </xacro:macro>
 
     <xacro:macro name="thigh_inertial">
         <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="1.0"/>
-            <inertia ixx="0"    ixy="0"     ixz="0"
-                                iyy="0"     iyz="0"
-                                            izz="0"/>
+            <origin xyz="0.0 -0.0275 0.00059547912" rpy="0 0 0"/>
+            <mass value="0.00874073"/>
+            <inertia ixx="4.10198432e-6"    ixy="0"                 ixz="0"
+                                            iyy="0.29079463e-6"     iyz="0"
+                                                                    izz="4.34650186e-6"/>
         </inertial>
     </xacro:macro>
 
     <xacro:macro name="shank_inertial">
         <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="1.0"/>
-            <inertia ixx="0"    ixy="0"     ixz="0"
-                                iyy="0"     iyz="0"
-                                            izz="0"/>
-        </inertial>
-    </xacro:macro>
-
-    <xacro:macro name="shank_inertial">
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="1.0"/>
-            <inertia ixx="0"    ixy="0"     ixz="0"
-                                iyy="0"     iyz="0"
-                                            izz="0"/>
+            <origin xyz="-0.00228398489 -0.02353716124 0" rpy="0 0 0"/>
+            <mass value="0.00326471"/>
+            <inertia ixx="1.90216748e-6"    ixy="-0.10865983e-6"    ixz="0"
+                                            iyy="0.09630658e-6"     iyz="0"
+                                                                    izz="1.98841332e-6"/>
         </inertial>
     </xacro:macro>
 
     <xacro:macro name="servo_inertial">
         <inertial>
+            <origin xyz="-0.00573817801 -0.01725001328 0" rpy="0 0 0"/>
+            <mass value="0.00959970"/>
+            <inertia ixx="0.52051125e-6"    ixy="-0.05833526e-6"     ixz="-0.00000002e-6"
+                                            iyy="0.56392841e-6"      iyz="0"
+                                                                    izz="0.87703376e-6"/>
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="body_electronic_inertial">
+        <inertial>
+            <origin xyz="-0.00092815856 -0.00209563833 0.00566985182" rpy="0 0 0"/>
+            <mass value="0.039"/>
+            <inertia ixx="${6.90502970 * 1.85}e-6"  ixy="${-0.26625045 * 1.85}e-6"  ixz="${0.21982991 * 1.85}e-6"
+                                                    iyy="${5.23067546 * 1.85}e-6"   iyz="${0.51582241 * 1.85}e-6"
+                                                                                    izz="${10.47135982 * 1.85}e-6"/>
+        </inertial>
+    </xacro:macro>
+
+<!--<xacro:macro name="dummy_inertial">
+        <inertial>
             <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="1.0"/>
+            <mass value="0"/>
             <inertia ixx="0"    ixy="0"     ixz="0"
                                 iyy="0"     iyz="0"
                                             izz="0"/>
         </inertial>
-    </xacro:macro>
+    </xacro:macro>-->
 
 </robot>
