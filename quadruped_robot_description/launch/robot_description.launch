@@ -14,11 +14,11 @@
                 Leg-RF-HFE_joint: 0.8
                 Leg-RF-KFE_joint: 2.0
                 Leg-LH-HAA_joint: 0.6
-                Leg-LH-HFE_joint: 2.5
-                Leg-LH-KFE_joint: 0.8
+                Leg-LH-HFE_joint: 0.8
+                Leg-LH-KFE_joint: 2.0
                 Leg-RH-HAA_joint: 0.6
-                Leg-RH-HFE_joint: 0.8
-                Leg-RH-KFE_joint: 2.0
+                Leg-RH-HFE_joint: 2.5
+                Leg-RH-KFE_joint: 0.8
         </rosparam>
         <!--<rosparam param="source_list">["/eeduro_delta_joint_state_publisher/joint_states"]</rosparam>-->
     </node>
