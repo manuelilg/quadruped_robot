@@ -2,12 +2,16 @@ cmake_minimum_required(VERSION 2.8.3)
 project(quadruped_robot_towr)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++14)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS
+    roscpp
+    std_msgs
+    towr_ros
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -99,10 +103,9 @@ find_package(catkin REQUIRED)
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES quadruped_robot_towr
-#  CATKIN_DEPENDS other_catkin_pkg
-#  DEPENDS system_lib
+  INCLUDE_DIRS include
+  CATKIN_DEPENDS roscpp
+  DEPENDS towr_ros
 )
 
 ###########
@@ -112,8 +115,33 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
-# ${catkin_INCLUDE_DIRS}
+ include
+ ${catkin_INCLUDE_DIRS}
+)
+
+add_executable(${PROJECT_NAME}_app
+  src/towr_ros_app.cc
+  src/robot_model.cc
+)
+#add_dependencies(${PROJECT_NAME}
+#  ${PROJECT_NAME}_gencpp
+#)
+target_link_libraries(${PROJECT_NAME}_app
+  ${catkin_LIBRARIES}
+)
+
+## Keyboard interfaces (ncurses)
+find_package(Curses REQUIRED)
+add_executable(${PROJECT_NAME}_user_interface
+    src/towr_user_interface.cc
+    src/robot_model.cc
+)
+#add_dependencies(${PROJECT_NAME}_user_interface
+#  ${PROJECT_NAME}_gencpp
+#)
+target_link_libraries(${PROJECT_NAME}_user_interface
+  ${catkin_LIBRARIES}
+  ${CURSES_LIBRARIES}
 )
 
 ## Declare a C++ library

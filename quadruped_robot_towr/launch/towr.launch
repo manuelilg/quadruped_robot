@@ -1,14 +1,36 @@
 <launch>
 
-    <include file="$(find towr_ros)/launch/towr_nodes.launch">
+    <!--<include file="$(find towr_ros)/launch/towr_nodes.launch">
         <arg name="gdb" value="" />
-    </include>
+    </include>-->
+
+    <node name="user_interface" pkg="quadruped_robot_towr" type="quadruped_robot_towr_user_interface" output="screen" launch-prefix="xterm -e">
+    </node>
+
+    <node name="rviz_terrain_publisher" pkg="towr_ros" type="rviz_terrain_publisher" output="screen">
+    </node>
+
+    <node name="goal_pose_publisher" pkg="towr_ros" type="goal_pose_publisher" output="screen">
+    </node>
+
+    <node name="quadruped_robot_towr_app" pkg="quadruped_robot_towr" type="quadruped_robot_towr_app" output="screen">
+    </node>
 
     <node name="rviz_marker_node" pkg="xpp_vis" type="rviz_marker_node" output="screen">
     </node>
 
     <param name="robot_description" command="xacro '$(find quadruped_robot_description)/urdf/quadruped_robot.urdf.xacro'"/>
 
-    <node name="urdf_visualizer_spider4" pkg="xpp_hyq" type="urdf_visualizer_spider4" output="screen"/>
+    <node name="urdf_visualizer_spider4" pkg="quadruped_robot_xpp" type="urdf_visualizer_spider4" output="screen">
+    </node>
+
+    <!-- Launch rviz with specific configuration -->
+    <node name="rviz_xpp" pkg="rviz" type="rviz" args="-d $(find quadruped_robot_towr)/rviz/xpp_towr.rviz">
+    </node>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
+      <param name="ignore_timestamp" value="true"/>
+      <param name="tf_prefix" value="spider_des"/>
+    </node>
 
 </launch>
