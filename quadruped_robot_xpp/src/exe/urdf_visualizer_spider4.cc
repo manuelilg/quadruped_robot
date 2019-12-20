@@ -51,13 +51,13 @@ int main(int argc, char *argv[])
 
   const std::string joint_desired_spider = "xpp/joint_spider_des";
 
-  auto hyq_ik = std::make_shared<InverseKinematicsSpider4>();
-  CartesianJointConverter inv_kin_converter(hyq_ik,
+  auto spider_ik = std::make_shared<InverseKinematicsSpider4>();
+  CartesianJointConverter inv_kin_converter(spider_ik,
 					    xpp_msgs::robot_state_desired,
               joint_desired_spider);
 
   // urdf joint names
-  int n_ee = hyq_ik->GetEECount();
+  int n_ee = spider_ik->GetEECount();
   int n_j  = SpiderLegJointCount;
   std::vector<UrdfVisualizer::URDFName> joint_names(n_ee*n_j);
   joint_names.at(n_j*LF + HAA) = "Leg-LF-HAA_joint";
@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
   joint_names.at(n_j*RH + KFE) = "Leg-RH-KFE_joint";
 
   std::string urdf = "robot_description";
-  UrdfVisualizer spider_desired(urdf, joint_names, "body_link", "world",
+  UrdfVisualizer spider_desired(urdf, joint_names, "base", "world",
            joint_desired_spider, "spider_des");
 
   ::ros::spin();

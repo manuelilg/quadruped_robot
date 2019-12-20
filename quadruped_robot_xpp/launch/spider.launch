@@ -5,6 +5,7 @@
   
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
     <param name="ignore_timestamp" value="true"/>
+    <param name="tf_prefix" value="spider_des"/>
   </node>
 
   <!-- Converts Cartesian state to joint state and publish TFs to rviz  --> 
