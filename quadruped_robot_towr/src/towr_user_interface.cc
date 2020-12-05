@@ -36,7 +36,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <towr_ros/TowrCommand.h>
 #include <towr_ros/topic_names.h>
 #include <towr/terrain/height_map.h>
-#include <towr/initialization/gait_generator.h>
+#include <quadruped_robot/initialization/gait_generator.h>
 #include <quadruped_robot/models/robot_model.h>
 
 

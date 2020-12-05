@@ -121,6 +121,8 @@ include_directories(
 
 add_executable(${PROJECT_NAME}_app
   src/towr_ros_app.cc
+  src/gait_generator.cc
+  src/spider_gait_generator.cc
   src/robot_model.cc
 )
 #add_dependencies(${PROJECT_NAME}
@@ -134,6 +136,8 @@ target_link_libraries(${PROJECT_NAME}_app
 find_package(Curses REQUIRED)
 add_executable(${PROJECT_NAME}_user_interface
     src/towr_user_interface.cc
+    src/gait_generator.cc
+    src/spider_gait_generator.cc
     src/robot_model.cc
 )
 #add_dependencies(${PROJECT_NAME}_user_interface

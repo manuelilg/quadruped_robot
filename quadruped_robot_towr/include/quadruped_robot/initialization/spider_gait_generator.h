@@ -30,7 +30,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef TOWR_MODELS_SPIDER_GAIT_GENERATOR_H_
 #define TOWR_MODELS_SPIDER_GAIT_GENERATOR_H_
 
-#include "gait_generator.h"
+#include <quadruped_robot/initialization/gait_generator.h>
 
 namespace towr {
 
@@ -51,6 +51,7 @@ private:
   GaitInfo GetStrideFlight() const;
   GaitInfo GetStrideWalk() const;
   GaitInfo GetStrideWalkOverlap() const;
+  GaitInfo GetCreepWalk() const;
   GaitInfo GetStrideTrot() const;
   GaitInfo GetStrideTrotFly() const;
   GaitInfo GetStrideTrotFlyEnd () const;

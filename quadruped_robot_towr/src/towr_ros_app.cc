@@ -27,7 +27,7 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************************************************************/
 
-#include <towr/initialization/gait_generator.h>
+#include <quadruped_robot/initialization/gait_generator.h>
 #include <quadruped_robot/towr_ros_interface.h>
 
 

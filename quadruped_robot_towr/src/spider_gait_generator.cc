@@ -79,7 +79,10 @@ SpiderGaitGenerator::SetCombo (Combos combo)
   switch (combo) {
     case C0: SetGaits({Stand, Walk2, Walk2, Walk2, Walk2E, Stand}); break; // overlap-walk
     case C1: SetGaits({Stand, Run2, Run2, Run2, Run2E, Stand});     break; // fly trot
-    case C2: SetGaits({Stand, Run3, Run3, Run3, Run3E, Stand}); break; // pace
+    //case C2: SetGaits({Stand, Walk1, Walk1, Walk1, Walk1, Stand}); break; // Creep
+    //case C2: SetGaits({Stand, Walk3, Walk3, Walk3, Walk3, Stand}); break; // Creep
+    case C2: SetGaits({Stand, Walk3, Walk3, Walk3, Walk3, Stand}); break; // Creep
+//    case C2: SetGaits({Stand, Run3, Run3, Run3, Run3E, Stand}); break; // pace
     case C3: SetGaits({Stand, Hop1, Hop1, Hop1, Hop1E, Stand}); break; // bound
     case C4: SetGaits({Stand, Hop3, Hop3, Hop3, Hop3E, Stand}); break; // gallop
     default: assert(false); std::cout << "Gait not defined\n"; break;
@@ -95,6 +98,10 @@ SpiderGaitGenerator::GetGait(Gaits gait) const
     case Walk1:   return GetStrideWalk();
     case Walk2:   return GetStrideWalkOverlap();
     case Walk2E:  return RemoveTransition(GetStrideWalkOverlap());
+//    case Walk3:   return GetStrideWalk();
+//    case Walk3E:  return RemoveTransition(GetStrideWalk());
+    case Walk3:   return GetCreepWalk();
+    case Walk3E:  return RemoveTransition(GetCreepWalk());
     case Run1:    return GetStrideTrot();
     case Run2:    return GetStrideTrotFly();
     case Run2E:   return GetStrideTrotFlyEnd();
@@ -167,7 +174,7 @@ SpiderGaitGenerator::GetStrideWalk () const
   auto times =
   {
       step, stand, step, stand,
-      step, stand, step, stand,
+      step, stand, step, stand
   };
   auto phase_contacts =
   {
@@ -198,6 +205,25 @@ SpiderGaitGenerator::GetStrideWalkOverlap () const
       Pb_, // start lifting RH
       PB_, PP_, BP_,
       bP_, // start lifting LH
+  };
+
+  return std::make_pair(times, phase_contacts);
+}
+
+SpiderGaitGenerator::GaitInfo
+SpiderGaitGenerator::GetCreepWalk() const
+{
+  //assert(false);
+
+  double step  = 0.3;
+  //double stand = 0.2;
+  auto times =
+  {
+      step, step, step, step
+  };
+  auto phase_contacts =
+  {
+    bB_, Bb_, PB_, BP_
   };
 
   return std::make_pair(times, phase_contacts);
